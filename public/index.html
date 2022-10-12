@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dad Jokes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module">
+      import "./joke-view.js";
+    </script>
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <h1 class="text-4xl font-black text-center py-6">Jokes</h1>
+    <div class="max-w-md mx-auto rounded-xl py-8 px-16 bg-gray-800">
+      <joke-view>
+        <div class="text-lg mb-8" id="joke">loading...</div>
+        <div class="border-t pb-4"></div>
+        <div class="text-center">
+          <button
+            class="bg-indigo-500 text-gray-50 py-3 px-4 rounded text-center"
+            type="submit"
+          >
+            New Joke
+          </button>
+        </div>
+      </joke-view>
+    </div>
+  </body>
+</html>
