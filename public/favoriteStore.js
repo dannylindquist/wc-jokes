@@ -11,8 +11,11 @@ class FavoriteStore extends EventTarget {
     this.favorites.push(joke);
     this.write();
     this.dispatchEvent(
-      new CustomEvent("add", {
-        data: joke,
+      new CustomEvent("update", {
+        detail: {
+          type: 'add',
+          data: joke
+        }
       })
     );
   }
@@ -20,5 +23,6 @@ class FavoriteStore extends EventTarget {
     localStorage.setItem("favorites", JSON.stringify(this.favorites));
   }
 }
-
-export const jokeStore = new FavoriteStore();
+const jokeStore = new FavoriteStore();
+jokeStore.loadFavorites();
+export { jokeStore };

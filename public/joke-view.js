@@ -5,10 +5,13 @@ window.customElements.define(
     connectedCallback() {
       this.jokeText = this.querySelector("#joke");
       this.button = this.querySelector(":scope button[type=submit]");
-      console.log(this.children);
       this.button.addEventListener("click", () => {
         this.fetchJoke();
       });
+      this.favoriteButton = this.querySelector(":scope button[data-name=favorite]");
+      this.favoriteButton.addEventListener('click', () => {
+        this.addFavorite();
+      })
       this.fetchJoke();
     }
     async fetchJoke() {
@@ -19,7 +22,7 @@ window.customElements.define(
         },
       });
       const data = await res.json();
-      this.currentJoke = data.joke;
+      this.currentJoke = data;
       this.jokeText.textContent = data.joke;
       this.button.disabled = false;
     }
