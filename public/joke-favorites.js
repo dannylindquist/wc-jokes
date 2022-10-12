@@ -9,7 +9,7 @@ window.customElements.define(
       this._render();
     }
     _storeUpdate(event) {
-      console.log(event);
+      this._render();
     }
     _clearChildren() {
       while(this.firstChild) {
@@ -19,8 +19,8 @@ window.customElements.define(
     _render() {
       this._clearChildren();
       for(const fav of jokeStore.favorites) {
-        console.log(fav)
         const node = document.importNode(this.template.content, true)
+        node.firstElementChild.dataset.joke = fav.id;
         const nodes = Array.from(node.querySelectorAll('[data-prop]'));
         for(const n of nodes) {
           if(fav[n.dataset.prop]) {
