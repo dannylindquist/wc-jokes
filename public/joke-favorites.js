@@ -6,7 +6,19 @@ window.customElements.define(
       this.template = this.querySelector(":scope template");
       this.removeChild(this.template);
       jokeStore.addEventListener('update', this._storeUpdate.bind(this));
+      this.addEventListener('click', this._handleOnClick)
       this._render();
+    }
+    _handleOnClick(e) {
+      let button = e.target;
+      if(e.target.nodeName !== 'button') {
+        button = e.target.closest("button[data-action='remove-joke']");
+      }
+      
+      if(button) {
+        const jokeId = button.closest('[data-joke]').dataset.joke;
+        jokeStore.removeFavorite(jokeId);
+      }
     }
     _storeUpdate(event) {
       this._render();

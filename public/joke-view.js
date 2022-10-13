@@ -14,6 +14,9 @@ window.customElements.define(
       })
       this.fetchJoke();
     }
+    disconnectedCallback() {
+      console.log("we've disconnected");
+    }
     async fetchJoke() {
       this.button.disabled = true;
       const res = await fetch("https://icanhazdadjoke.com", {
@@ -25,9 +28,15 @@ window.customElements.define(
       this.currentJoke = data;
       this.jokeText.textContent = data.joke;
       this.button.disabled = false;
+      if(jokeStore.favorites.find(x => x.id === data.id)) {
+        this.favoriteButton.querySelector('svg').classList.add('fill-red-300');
+      } else {
+        this.favoriteButton.querySelector('svg').classList.remove('fill-red-300');
+      }
     }
     addFavorite() {
       jokeStore.addFavorite(this.currentJoke);
+      this.favoriteButton.querySelector('svg').classList.add('fill-red-300');
     }
   }
 );

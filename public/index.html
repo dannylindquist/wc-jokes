@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dad Jokes</title>
+    <title>Jokes</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🤡</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link rel="stylesheet" href="/styles.css" />
@@ -11,40 +12,46 @@
     </script>
   </head>
   <body class="bg-gray-900 text-gray-100">
-    <h1 class="text-4xl font-black text-center py-6">Jokes</h1>
-    <div class="max-w-md mx-auto rounded-xl py-8 px-16 bg-gray-800">
-      <joke-view>
-        <div class="text-lg mb-8" id="joke">loading...</div>
-        <div class="border-t pb-4"></div>
-        <div class="flex">
-          <div class="flex-1"></div>
-          <button
-            class="bg-indigo-500 text-gray-50 py-3 px-4 rounded text-center"
-            type="submit"
-          >
-            New Joke
-          </button>
-          <div class="flex-1 flex justify-end">
-            <button class="p-4 hover:bg-red-300 rounded-xl" data-name="favorite" aria-label="Add Favorite">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-              </svg>
+    <h1 class="text-5xl font-black font-serif text-center py-12">Jokes</h1>
+    <div class="max-w-md mx-auto">
+      <div class="rounded-xl py-8 px-8 bg-gray-800 mx-2">
+        <joke-view>
+          <div class="text-lg mb-8" id="joke">loading...</div>
+          <noscript>Come back with javascript please</noscript>
+          <div class="border-t pb-4"></div>
+          <div class="flex">
+            <div class="flex-1"></div>
+            <button
+              class="bg-indigo-600 text-gray-50 py-3 px-4 rounded text-center"
+              type="submit"
+            >
+              New Joke
+            </button>
+            <div class="flex-1 flex justify-end">
+              <button class="p-4 hover:bg-red-300 rounded-xl" data-name="favorite" aria-label="Add Favorite">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </joke-view>
+      </div>
+    </div>
+    <div class="mx-auto max-w-lg px-2 pt-8">
+      <h2 class="font-semibold text-xl font-serif">Favorites</h2>
+      <joke-favorites class="block space-y-3 pt-4">
+        <template>
+          <div class="flex items-center space-x-8">
+            <span class="flex-1 inline-block" data-prop="joke"></span>
+            <button data-action="remove-joke" aria-label="remove joke">
+              <svg class="text-red-300 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>              
             </button>
           </div>
-        </div>
-      </joke-view>
-    </div>
-    <div class="mx-auto max-w-lg">
-      <div class="space-y-2">
-        <joke-favorites>
-          <template>
-            <div class="px-2 py-3 rounded flex items-center">
-              <span class="flex-1" data-prop="joke"></span>
-              <button>Remove</button>
-            </div>
-          </template>
-        </joke-favorites>
-      </div>
+        </template>
+      </joke-favorites>
     </div>
   </body>
 </html>
